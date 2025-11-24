@@ -1,158 +1,554 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <title>Study Umbrella - Онлайн школа</title>
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Umbrella — онлайн школа</title>
+
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
+
 <body>
-    <main class="screen">
-        <div class="container">
-            <!-- Header -->
-            <header class="header">
-                <div class="logo">
-                    <img src="https://c.animaapp.com/nN4ASstv/img/2025-08-07-15-56-16-2-1@2x.png" alt="Study Umbrella Logo" width="50" />
-                    <span>Study Umbrella</span>
-                </div>
-                <nav class="navbar">
-                    <a href="#about">О нас</a>
-                    <a href="#courses">Наши курсы</a>
-                    <a href="#teachers">Преподаватели</a>
-                    <a href="#form">Записаться</a>
-                    <a href="#contacts">Контакты</a>
-                </nav>
-            </header>
 
-            <!-- Hero Section -->
-            <section class="hero" id="about">
-                <h1>ОНЛАЙН ШКОЛА <span class="accent">STUDY UMBRELLA</span></h1>
-                <p>Все знания под единым, надежным зонтом!</p>
-                <button class="cta-button">Запишись на первое занятие!</button>
-            </section>
+  <!-- HEADER -->
+<header class="header" id="siteHeader">
+  <div class="container header__inner">
 
-            <!-- Features -->
-            <section class="features">
-                <div class="feature-card">
-                    <h3>Современно</h3>
-                    <p>Используем только современные методики обучения.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>"По домашнему"</h3>
-                    <p>Максимальная гибкость в выборе направлений работы для ученика.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Легко</h3>
-                    <p>Говорим о сложном простыми словами, учим не "зубрить", а понимать.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Доступно</h3>
-                    <p>Пробный урок с нашими преподавателями вы можете пройти абсолютно бесплатно!</p>
-                </div>
-            </section>
+    <!-- ЛОГОТИП -->
+    <a href="#" class="logo">
+      <img src="img/logo.png" class="logo__img" alt="Логотип">
+    </a>
 
-            <!-- Programs -->
-            <section class="programs" id="courses">
-                <h2 class="section-title">НАШИ ПРОГРАММЫ</h2>
-                
-                <div class="course-types">
-                    <div class="course-card">
-                        <h3>Языковая школа</h3>
-                        <p>Индивидуальные занятия и мини-группы</p>
-                        <button class="cta-button">Узнать больше</button>
-                    </div>
-                    <div class="course-card">
-                        <h3>Гуманитарная школа</h3>
-                        <p>Подготовка к ЕГЭ и олимпиадам</p>
-                        <button class="cta-button">Узнать больше</button>
-                    </div>
-                    <div class="course-card">
-                        <h3>Техническая школа</h3>
-                        <p>Математика, физика, программирование</p>
-                        <button class="cta-button">Узнать больше</button>
-                    </div>
-                </div>
-            </section>
+    <!-- МЕНЮ -->
+<nav class="nav">
+  <a href="#about">О нас</a>
+  <a href="#courses">Наши курсы</a>
+  <a href="#teachers">Наши преподаватели</a>
+  <a href="#offers">Наши предложения</a>
+  <a href="#contacts">Контакты</a>
 
-            <!-- Teachers -->
-            <section class="teachers" id="teachers">
-                <h2 class="section-title">НАШИ ПРЕПОДАВАТЕЛИ</h2>
-                
-                <div class="teachers-grid">
-                    <div class="teacher-card">
-                        <img src="https://c.animaapp.com/nN4ASstv/img/ellipse-10@2x.png" alt="Лапина Анна" class="teacher-image" />
-                        <h3>Лапина Анна</h3>
-                        <p>Английский язык<br>Экзамен CAE - C2</p>
-                        <p><strong>Опыт:</strong> 3 года</p>
-                    </div>
-                    <div class="teacher-card">
-                        <img src="https://c.animaapp.com/nN4ASstv/img/ellipse-9@2x.png" alt="Гудкова Елизавета" class="teacher-image" />
-                        <h3>Гудкова Елизавета</h3>
-                        <p>Китайский язык<br>Экзамен HSK3</p>
-                        <p><strong>Опыт:</strong> 3 года</p>
-                    </div>
-                    <div class="teacher-card">
-                        <img src="https://c.animaapp.com/nN4ASstv/img/ellipse-10@2x.png" alt="Железнякова Ульяна" class="teacher-image" />
-                        <h3>Железнякова Ульяна</h3>
-                        <p>Испанский язык<br>Экзамен DELE - B2</p>
-                        <p><strong>Опыт:</strong> 3 года</p>
-                    </div>
-                </div>
-            </section>
+  <!-- Эта группа нужна ТОЛЬКО для мобильного бургера -->
+  <div class="nav-main-group">
+    <button class="nav-main-toggle" type="button">
+      Главная ▾
+    </button>
+    <div class="nav-main-submenu">
+      <a href="language-school.html">Языковая школа</a>
+      <a href="humanities-school.html">Гуманитарная школа</a>
+    </div>
+  </div>
+</nav>
 
-            <!-- Contact Form -->
-            <section class="contact-form" id="form">
-                <h2 class="section-title">Форма обратной связи</h2>
-                
-                <form>
-                    <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Номер телефона</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="comment">Комментарий</label>
-                        <textarea id="comment" name="comment" rows="3"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>
-                            <input type="checkbox" required>
-                            Соглашаюсь с политикой конфиденциальности
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Отправить</button>
-                </form>
-            </section>
 
-            <!-- Footer -->
-            <footer class="footer" id="contacts">
-                <div class="footer-nav">
-                    <div>
-                        <h4>Study Umbrella</h4>
-                        <p>Онлайн школа с индивидуальным подходом</p>
-                    </div>
-                    <div>
-                        <h4>Контакты</h4>
-                        <a href="tel:+79999999999">+7 (999) 999-99-99</a><br>
-                        <a href="mailto:info@studyumbrella.ru">info@studyumbrella.ru</a>
-                    </div>
-                    <div>
-                        <h4>Навигация</h4>
-                        <a href="#about">О нас</a><br>
-                        <a href="#courses">Курсы</a><br>
-                        <a href="#teachers">Преподаватели</a>
-                    </div>
-                </div>
-            </footer>
+
+    <!-- ПРАВАЯ ЧАСТЬ: КНОПКА С ВЫПАДАЮЩИМ СПИСКОМ -->
+    <div class="header__right">
+      <div class="dropdown" id="mainDropdown">
+        <button class="btn btn--ghost btn--main" id="mainMenuToggle">
+          Главная ▾
+        </button>
+
+        <div class="dropdown__menu" id="mainMenu">
+          <a href="language-school.html">Языковая школа</a>
+          <a href="humanities-school.html">Гуманитарная школа</a>
         </div>
-    </main>
+      </div>
+    </div>
+    <!-- БУРГЕР ДЛЯ МОБИЛЬНОЙ ВЕРСИИ -->
+    <button class="burger" id="burgerToggle" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>
+
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero__inner">
+
+    <div class="hero__content">
+     
+
+      <h1 class="hero__title">
+        <span class="hero__title-top">ОНЛАЙН ШКОЛА</span><br>
+        <span class="hero__title-main">STUDY UMBRELLA</span>
+      </h1>
+
+      <p class="hero__text">
+        Все знания под единым, надёжным зонтом!<br>
+        Запишитесь на первое занятие уже сегодня.
+      </p>
+
+      <button class="btn btn--primary hero__btn">
+        Запишись на первое занятие!
+      </button>
+
+      <!-- ❗ ОСТАВЛЯЕМ ТОЛЬКО ЭТУ ОДНУ СТРЕЛКУ -->
+      <img src="img/hero-arrow.png" alt="" class="hero__arrow">
+    </div>
+
+    <div class="hero__image-wrap">
+      <img src="img/hero-main.png" alt="Онлайн обучение" class="hero__image">
+    </div>
+
+  </div>
+</section>
+
+  <!-- НАША ЦЕЛЬ -->
+  <section class="section" id="about">
+    <div class="container">
+
+      <h2 class="section__title">
+        В ЧЕМ <span class="section__title-accent">НАША ЦЕЛЬ?</span>
+      </h2>
+
+      <div class="goal-cards">
+
+        <article class="goal-card goal-card--peach">
+          <h3>Поддержать студентов</h3>
+          <p>Поддержать студентов на каждом этапе обучения.</p>
+        </article>
+
+        <article class="goal-card goal-card--mint">
+          <h3>Разделить уникальный опыт</h3>
+          <p>Разделить уникальный опыт и знания наших учителей с учениками.</p>
+        </article>
+
+        <article class="goal-card goal-card--blue">
+          <h3>Расширить мировоззрение</h3>
+          <p>Расширить мировоззрение наших учеников.</p>
+        </article>
+
+      </div>
+
+      <div class="about-text">
+        <p class="about-line">
+         <strong> Осваивайте любые предметы легко и интересно,</strong>
+          <span class="accent">с опытными преподавателями,которым можно доверять.</span>
+        </p>
+        <p>
+         <strong> Мы предлагаем комфортные занятия и максимальную эффективность, а также
+          свободный график и интересные домашние задания.</strong>
+        </p>
+      </div>
+
+     <section class="section section--white" id="teachers">
+  <div class="container">
+
+    <h2 class="section__title section__title--left">
+    <section class="section" id="teachers">
+  <div class="container">
+
+    <h2 class="section__title section__title--left">
+    <section class="section" id="teachers">
+  <div class="container">
+
+    <h2 class="section__title section__title--left">
+  <!-- НАШИ ПРЕПОДАВАТЕЛИ -->
+<section class="section section--teachers" id="teachers">
+  <div class="container">
+    <h2 class="section__title section__title--left">
+      НАШИ ПРЕПОДАВАТЕЛИ
+    </h2>
+
+    <div class="teachers-slider">
+
+      <!-- Кнопка НАЗАД -->
+      <button class="teachers-slider__btn teachers-slider__btn--prev"
+              type="button"
+              aria-label="Предыдущие преподаватели">
+        ‹
+      </button>
+
+      <!-- “Окно” слайдера -->
+      <div class="teachers-slider__viewport">
+        <!-- Лента с учителями -->
+        <div class="teachers-slider__track">
+          <!-- 1 -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-1.jpg" alt="Лапина Анна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-cae.png" alt="Сертификат CAE">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Лапина Анна</h3>
+            <p class="teacher-card__subject teacher-card__subject--english">
+              Английский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен CAE-C2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- 2 -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-2.jpg" alt="Гудкова Елизавета">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-hsk.png" alt="Экзамен HSK3">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Гудкова Елизавета</h3>
+            <p class="teacher-card__subject teacher-card__subject--chines">
+              Китайский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен HSK3</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- 3 -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
+            <p class="teacher-card__subject teacher-card__subject--spanies">
+              Испанский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен DELE-B2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          
+          <!-- 4 -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
+            <p class="teacher-card__subject teacher-card__subject--spanies">
+              Испанский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен DELE-B2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- дальше просто добавляешь ещё teacher-card -->
+        </div>
+      </div>
+
+      <!-- Кнопка ВПЕРЁД -->
+      <button class="teachers-slider__btn teachers-slider__btn--next"
+              type="button"
+              aria-label="Следующие преподаватели">
+        ›
+      </button>
+    </div>
+
+    <!-- точки-пагинация -->
+    <div class="teachers-slider__dots"></div>
+  </div>
+</section>
+
+
+
+  <!-- ПОЧЕМУ ВЫБИРАЮТ НАС -->
+<section class="section section--why" id="why">
+  <div class="container">
+
+ <h2 class="why-title-main">ПОЧЕМУ ВЫБИРАЮТ НАС?</h2>
+<h3 class="why-title-sub">ПОТОМУ ЧТО ЗАНЯТИЯ С НАМИ ЭТО:</h3>
+
+
+    <div class="formats">
+      <article class="format-card format-card--soft">
+        <div class="format-card__label">Современно</div>
+        <p>Используем только современные методики обучения.</p>
+      </article>
+
+      <article class="format-card format-card--peach">
+        <div class="format-card__label">Доступно</div>
+        <p>Пробный урок с нашими преподавателями вы можете пройти абсолютно бесплатно.</p>
+      </article>
+
+      <article class="format-card format-card--mint">
+        <div class="format-card__label">Легко</div>
+        <p>Говорим о сложном простыми словами, учим не «зубрить», а понимать.</p>
+      </article>
+
+      <article class="format-card format-card--lilac">
+        <div class="format-card__label">«По-домашнему»</div>
+        <p>Максимальная гибкость в выборе направлений и формата занятий для ученика.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+
+  <!-- НАПРАВЛЕНИЯ -->
+  <section class="section section--soft">
+    <div class="container">
+
+      <h2 class="section__title">ДОСТУПНЫЕ НАПРАВЛЕНИЯ:</h2>
+
+      <div class="tracks">
+
+        <article class="track-card">
+          <img src="img/track-1.jpg" alt="" class="track-card__image">
+          <div class="track-card__body">
+            <h3>Языковая школа</h3>
+            <p>Индивидуальные занятия и мини-группы.</p>
+          </div>
+        </article>
+
+        <article class="track-card">
+          <img src="img/track-2.jpg" alt="" class="track-card__image">
+          <div class="track-card__body">
+            <h3>Гуманитарная школа</h3>
+            <p>История, обществознание, русский язык.</p>
+          </div>
+        </article>
+
+        <article class="track-card">
+          <img src="img/track-3.jpg" alt="" class="track-card__image">
+          <div class="track-card__body">
+            <h3>Подготовка к экзаменам</h3>
+            <p>ЕГЭ, ОГЭ и другие экзамены.</p>
+          </div>
+        </article>
+
+        <article class="track-card">
+          <img src="img/track-4.jpg" alt="" class="track-card__image">
+          <div class="track-card__body">
+            <h3>Дополнительные курсы</h3>
+            <p>Авторские программы и спецкурсы.</p>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ФОРМА -->
+  <section class="section section--white" id="offers">
+    <div class="container contact-block">
+
+      <div class="contact-block__text">
+        <h2 class="section__title section__title--left">
+          Запишитесь на вводный <span class="section__title-accent">бесплатный урок</span>
+        </h2>
+
+        <p class="contact-block__p">
+          Мы всегда рады пообщаться с вами, ответить на любые ваши вопросы
+          и записать вас на пробный урок!
+        </p>
+        <p class="contact-block__p">
+          Свяжитесь с нами или оставьте заявку в форме обратной связи.
+        </p>
+
+        <p class="contact-block__subtitle">Свяжитесь с нами!</p>
+
+        <div class="socials">
+          <a href="#" class="socials__item socials__item--vk"></a>
+          <a href="#" class="socials__item socials__item--tg"></a>
+          <a href="#" class="socials__item socials__item--mail"></a>
+        </div>
+      </div>
+
+      <form class="form" id="contacts">
+        <h3 class="form__title">Форма обратной связи</h3>
+
+        <label class="form__field">
+          <span>Ваше имя</span>
+          <input type="text">
+        </label>
+
+        <label class="form__field">
+          <span>Номер телефона</span>
+          <input type="tel">
+        </label>
+
+        <label class="form__field">
+          <span>Комментарий</span>
+          <textarea rows="3"></textarea>
+        </label>
+
+        <label class="form__checkbox">
+          <input type="checkbox">
+          <span>Соглашаюсь с политикой конфиденциальности и даю согласие на обработку персональных данных.</span>
+        </label>
+
+        <button class="btn btn--primary form__submit" type="submit">Отправить</button>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+
+      <div class="footer__logo">
+        <img src="img/logo.png" alt="">
+        <span>Study Umbrella</span>
+      </div>
+
+      <nav class="footer__nav">
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#courses">Начать заниматься</a>
+      </nav>
+
+      <div class="footer__policy">Политика конфиденциальности</div>
+
+    </div>
+  </footer>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const dropdown = document.getElementById('mainDropdown');
+    const mainToggle = document.getElementById('mainMenuToggle');
+    const header = document.getElementById('siteHeader');
+    const burger = document.getElementById('burgerToggle');
+
+    const navMainGroup = document.querySelector('.nav-main-group');
+    const navMainToggle = document.querySelector('.nav-main-toggle');
+
+    // Справа кнопка "Главная" (десктоп)
+    if (dropdown && mainToggle) {
+      mainToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('dropdown--open');
+      });
+    }
+
+    // Бургер (мобилка)
+    if (header && burger) {
+      burger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        header.classList.toggle('header--mobile-open');
+      });
+    }
+
+    // "Главная" внутри мобильного меню
+    if (navMainGroup && navMainToggle) {
+      navMainToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        navMainGroup.classList.toggle('nav-main-group--open');
+      });
+    }
+
+    // Клик вне — закрываем всё
+    document.addEventListener('click', function () {
+      if (dropdown) dropdown.classList.remove('dropdown--open');
+      if (header) header.classList.remove('header--mobile-open');
+      if (navMainGroup) navMainGroup.classList.remove('nav-main-group--open');
+    });
+  });
+</script>
+
+<script>
+  (function () {
+    const slider = document.querySelector('.teachers-slider');
+    if (!slider) return;
+
+    const viewport = slider.querySelector('.teachers-slider__viewport');
+    const track = slider.querySelector('.teachers-slider__track');
+    const prevBtn = slider.querySelector('.teachers-slider__btn--prev');
+    const nextBtn = slider.querySelector('.teachers-slider__btn--next');
+    const dotsContainer = slider.querySelector('.teachers-slider__dots');
+    const cards = Array.from(track.children);
+
+    let perView = 3; // по умолчанию
+    let page = 0;
+
+    function calcPerView() {
+      const w = window.innerWidth;
+      if (w <= 768) {
+        perView = 2;   // телефоны
+      } else if (w <= 1024) {
+        perView = 4;   // планшеты
+      } else {
+        perView = 3;   // десктоп
+      }
+      track.style.setProperty('--per-view', perView);
+    }
+
+    function pagesCount() {
+      return Math.ceil(cards.length / perView);
+    }
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const count = pagesCount();
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'teachers-slider__dot' + (i === page ? ' is-active' : '');
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll('.teachers-slider__dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === page);
+      });
+    }
+
+    function goToPage(newPage) {
+      const count = pagesCount();
+      if (!count) return;
+
+      page = (newPage + count) % count;
+
+      const offset = page * viewport.offsetWidth;
+      track.style.transform = `translateX(-${offset}px)`;
+
+      updateDots();
+    }
+
+    let resizeTimeout;
+    function onResize() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const oldPerView = perView;
+        calcPerView();
+        if (perView !== oldPerView) {
+          page = 0;
+          buildDots();
+          goToPage(0);
+        } else {
+          goToPage(page);
+        }
+      }, 150);
+    }
+
+    calcPerView();
+    buildDots();
+    goToPage(0);
+
+    prevBtn.addEventListener('click', () => goToPage(page - 1));
+    nextBtn.addEventListener('click', () => goToPage(page + 1));
+    window.addEventListener('resize', onResize);
+  })();
+</script>
+
+
+
+
 </body>
 </html>
+
+
