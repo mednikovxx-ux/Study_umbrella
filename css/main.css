@@ -1,254 +1,4 @@
-/* Цвета */
-:root {
-  --primary: #f34b4b;
-  --text-main: #2c2c2c;
-  --bg-soft: #F9FAF5;
-
-  --accent-yellow: #ffd766;
-  --accent-mint: #c7f0e9;
-  --accent-peach: #ffe5d4;
-  --accent-lilac: #e9d7ff;
-  --accent-blue: #cde8ff;
-}
-
-/* HEADER */
-
-.header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #f0e6e0;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 96px;
-  gap: 16px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo__img {
-  width: 150px;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Горизонтальное меню на десктопе */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #444;
-}
-
-.nav a {
-  position: relative;
-}
-
-.nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary);
-  transition: width 0.2s;
-}
-
-.nav a:hover::after {
-  width: 100%;
-}
-
-.header__right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-right: 24px;
-}
-
-/* Кнопка "Главная" справа (десктоп) */
-.btn--main {
-  padding: 10px 24px;
-  font-size: 14px;
-  border-radius: 999px;
-  border: 1px solid #d6d6d6;
-  background: #fff;
-  cursor: pointer;
-}
-
-/* Выпадающее меню справа (десктоп) */
-.dropdown {
-  position: relative;
-}
-
-.dropdown__menu {
-  position: absolute;
-  right: 0;
-  top: 110%;
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  padding: 8px 0;
-  min-width: 220px;
-  display: none;
-  z-index: 30;
-}
-
-.dropdown__menu a {
-  display: block;
-  padding: 10px 16px;
-  font-size: 14px;
-  color: #111;
-  text-decoration: none;
-}
-
-.dropdown__menu a:hover {
-  background-color: #f3f4f6;
-}
-
-.dropdown--open .dropdown__menu {
-  display: block;
-}
-
-/* Бургер по умолчанию скрыт (только для мобилки) */
-.burger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  border: 1px solid #d6d6d6;
-  background-color: #ffffff;
-  padding: 0;
-  margin-right: 12px;
-}
-
-.burger span {
-  display: block;
-  width: 16px;
-  height: 2px;
-  background-color: #111;
-  border-radius: 999px;
-}
-
-/* "Главная" для мобильного меню — по умолчанию скрыта (только моб) */
-.nav-main-group {
-  position: relative;
-  display: none;       /* важное: на десктопе не показываем */
-}
-
-.nav-main-toggle {
-  font-size: 14px;
-  font-weight: 500;
-  color: #444;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.nav-main-submenu {
-  display: none;
-  margin-top: 6px;
-}
-
-.nav-main-submenu a {
-  display: block;
-  padding: 4px 0;
-  font-size: 14px;
-}
-
-.nav-main-group--open .nav-main-submenu {
-  display: block;
-}
-
-/* ===== АДАПТИВ ШАПКИ ===== */
-
-@media (max-width: 768px) {
-  .header__inner {
-    height: 64px;
-  }
-
-  /* показываем бургер */
-  .burger {
-    display: flex;
-  }
-
-  /* убираем правую кнопку "Главная" на мобилке */
-  .header__right {
-    display: none;
-  }
-
-  /* перестраиваем меню в выпадающий список под шапкой */
-  .nav {
-    position: absolute;
-    top: 64px; /* высота шапки */
-    left: 0;
-    right: 0;
-    background-color: #ffffff;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 16px 16px;
-    border-bottom: 1px solid #f0e6e0;
-    display: none;          /* по умолчанию скрыто */
-    z-index: 25;
-  }
-
-  /* когда хедер в состоянии mobile-open — показываем меню */
-  .header--mobile-open .nav {
-    display: flex;
-  }
-
-  /* "Главная" в мобильном меню */
-  .nav-main-group {
-    display: block;    /* теперь показываем */
-    width: 100%;
-    order: -1;         /* именно это поднимает её НА САМО ВЕРХУ */
-    margin-bottom: 8px;
-  }
-
-  .nav-main-toggle {
-    padding: 8px 0;
-    width: 100%;
-    text-align: left;
-  }
-
-  .nav-main-submenu {
-    margin-top: 4px;
-    padding-left: 16px;
-  }
-
-  .nav-main-submenu a {
-    padding: 4px 0;
-  }
-}
-
-
-/* Кнопки */
-
-.btn {
-  border-radius: 999px;
-  padding: 10px 18px;
-  font-size: 13px;
-  font-weight: 500;
-  border: 1px solid transparent;
-  background-color: transparent;
+@@ -252,143 +252,127 @@
   white-space: nowrap;
 }
 
@@ -289,6 +39,14 @@
 
 
 /* HERO */
+.btn--outline {
+  border-color: #d1d5db;
+  background-color: transparent;
+}
+
+
+
+/* HERO */
 
 .hero {
   padding: 0 0 0px;
@@ -315,6 +73,17 @@
   width: 180px;
   left: 260px; /* отрегулируем после — сейчас это контрольная точка */
   top: 140px;
+  pointer-events: none;
+}
+.hero__content {
+  position: relative; /* чтобы стрелка позиционировалась внутри текста */
+}
+.hero__arrow {
+  position: absolute;
+  width: 160px;
+  left: 220px;
+  top: 150px;
+  opacity: 0.95;
   pointer-events: none;
 }
 .hero__label {
@@ -367,6 +136,14 @@
   display: flex;
   justify-content: center;
 }
+.hero__btn {
+  margin-top: 60px;
+}
+
+.hero__image-wrap {
+  display: flex;
+  justify-content: center;
+}
 
 .hero__image {
   width: 100%;
@@ -392,82 +169,7 @@
   background-color: var(--bg-soft);
 }
 
-.section__title {
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 24px;
-  text-align: left;
-}
-
-.section__title--left {
-  text-align: left;
-}
-
-.section__title-accent {
-  color: var(--primary);
-}
-
-.section__title-accent--blue {
-  color: #6ec4d8;
-}
-/* Текстовые блоки под секцией "В ЧЕМ НАША ЦЕЛЬ?" */
-
-.about-line {
-  font-size: 20px;
-  line-height: 1.5;
-  font-weight: 600;
-  max-width: 580px;
-}
-
-.about-line .accent {
-  color: var(--primary) !important;
-  font-weight: 700 !important;
-}
-
-/* Цели */
-
-.goal-cards {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 28px;
-}
-
-.goal-card {
-  padding: 20px 22px;
-  border-radius: 24px;
-  font-size: 16px;
-
-  /* Лёгкая тень как в фигме */
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-}
-
-/* Заголовок внутри карточки */
-.goal-card h3 {
-  margin-bottom: 8px;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-/* НОВЫЕ ЦВЕТА карточек */
-.goal-card--peach {
-  background-color: rgba(255, 193, 67, 0.5); /* мягкий персиковый */
-}
-
-.goal-card--mint {
-  background-color: rgba(73, 154, 155, 0.5); /* мягкий мятный */
-}
-
-.goal-card--blue {
-  background-color: rgba(220, 61, 75, 0.5); /* мягкий голубой */
-}
-
-.about-text {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 26px;
-  font-size: 17px;
-  line-height: 1.45;
+@@ -471,57 +455,60 @@
   margin-bottom: 34px;
 }
 
@@ -500,6 +202,16 @@
   gap: var(--gap);
   transition: transform 0.4s ease;
 }
+.teachers-slider__track {
+  --gap: 26px;
+  --per-view: 3;                /* по умолчанию 3 карточки */
+  display: flex;
+  gap: var(--gap);
+  flex: 0 0 auto;
+  width: max-content;
+  min-width: 100%;
+  transition: transform 0.4s ease;
+}
 
 /* ОДНА карточка: ширина зависит от --per-view */
 .teacher-card {
@@ -525,583 +237,408 @@
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-
-.teachers-slider__btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 22px rgba(15, 23, 42, 0.22);
-}
-
-.teachers-slider__btn:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.16);
-}
-
-/* точки-пагинация */
-.teachers-slider__dots {
-  margin-top: 18px;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-
-.teachers-slider__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  border: none;
-  background-color: #d4d4d8;
-  cursor: pointer;
-  padding: 0;
-  transition: width 0.2s ease, background-color 0.2s ease;
-}
-
-.teachers-slider__dot.is-active {
-  width: 22px;
-  background-color: var(--primary);
-}
-
-/* адаптив */
-@media (max-width: 1024px) {
-  .teachers-slider__btn {
-    width: 34px;
-    height: 34px;
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .teachers-slider {
-    gap: 8px;
-  }
-
-  .teachers-slider__btn {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-
-  .teachers-slider__btn--prev {
-    left: 4px;
-  }
-
-  .teachers-slider__btn--next {
-    right: 4px;
-  }
-}
-
-/* ===== СТИЛИ КАРТОЧКИ ПРЕПОДАВАТЕЛЯ (кружки + бейджи) ===== */
-
-.teacher-card__photo-wrap {
-  position: relative;
-  width: 280px;
-  height: 280px;
-  margin: 0 auto 24px;
-}
-
-.teacher-card__photo {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.teacher-card__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* бейдж */
-.teacher-card__badge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-}
-
-.teacher-card__badge img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.teacher-card__name {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.teacher-card__subject {
-  margin-bottom: 6px;
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: 0.03em;
-  font-family: "Kurale", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.teacher-card__exam {
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 2px;
-}
-
-.teacher-card__exp {
-  font-size: 12px;
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-.teacher-card__subject--english {
-  color: #D65655;
-}
-
-.teacher-card__subject--chines {
-  color: #1a9bb8;
-}
-
-.teacher-card__subject--spanies {
-  color: #FFC144;
-}
-
-
-
-/* НАШИ ПРОГРАММЫ И ФОРМАТЫ */
-
-
-/* === ПОЧЕМУ ВЫБИРАЮТ НАС === */
-
-/* Фон секции и общий отступ */
-.section--why {
-  background-color: #F9FAF5;             /* фон блока как в макете */
-  font-family: "Onest", sans-serif;
-  padding: 60px 0;
-}
-
-/* Две строки заголовка */
-.why-title-main {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 800;
-  color: #E54545;                        /* красный */
-  margin-bottom: 4px;
-}
-
-.why-title-sub {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 800;
-  color: #000;                           /* чёрный */
-  margin-bottom: 32px;
-}
-
-/* Сетка карточек внутри секции */
-.section--why .formats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 10px;
-}
-
-/* Карточка */
-.section--why .format-card {
-  padding: 22px 24px;
-  border-radius: 26px;
-  font-size: 15px;
-  line-height: 1.45;
-  border: none;
-  color: #2b2626;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08); /* лёгкая тень */
-}
-
-/* Внутренняя плашка-заголовок (Современно, Доступно и т.п.) */
-.section--why .format-card__label {
-  display: inline-block;
-  padding: 7px 26px;
-  border-radius: 999px;
-  border: 1.5px solid rgba(0, 0, 0, 0.8);
-  background: transparent;              /* фон = фон карточки */
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-
-/* Текст в карточке */
-.section--why .format-card p {
-  margin: 0;
-}
-
-/* ЯРКИЕ цвета карточек (как в макете) */
-.section--why .format-card--soft {
-  background-color: rgba(220, 61, 75, 0.5);            /* розовый */
-}
-
-.section--why .format-card--peach {
-  background-color: rgba(255, 193, 67, 0.5);            /* жёлтый/оранжевый */
-}
-
-.section--why .format-card--mint {
-  background-color: rgba(73, 154, 155, 0.5);            /* мятный */
-}
-
-.section--why .format-card--lilac {
-  background-color: rgba(202, 138, 60, 0.5);            /* лиловый */
-}
-
-/* Адаптив */
-@media (max-width: 1024px) {
-  .section--why .formats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .section--why .formats {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-/* Направления */
-
-.tracks {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.track-card {
-  background-color: #ffffff;
-  border-radius: 22px;
-  border: 1px solid #f0e6e0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.track-card__image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-
-.track-card__body {
-  padding: 14px 16px 18px;
-  font-size: 14px;
-}
-
-.track-card__body h3 {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.track-card__body p {
-  font-size: 13px;
-  color: #4b5563;
-}
-
-/* Блок контактов + форма */
-
-.contact-block {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 32px;
-  align-items: flex-start;
-}
-
-.contact-block__p {
-  font-size: 14px;
-  color: #4b5563;
-  margin-bottom: 6px;
-}
-
-.contact-block__subtitle {
-  margin-top: 18px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-/* Соцсети */
-
-.socials {
-  display: flex;
-  gap: 10px;
-}
-
-.socials__item {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #d1d5db;
-}
-
-.socials__item--vk {
-  background-color: #4c75a3;
-}
-.socials__item--tg {
-  background-color: #34aadf;
-}
-.socials__item--mail {
-  background-color: #f6c453;
-}
-
-/* Форма */
-
-.form {
-  background-color: #fbe9e9;
-  padding: 22px 24px;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.form__title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.form__field {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 13px;
-}
-
-.form__field input,
-.form__field textarea {
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  padding: 8px 10px;
-  font: inherit;
-  resize: none;
-}
-
-.form__field input:focus,
-.form__field textarea:focus {
-  outline: 2px solid rgba(243, 75, 75, 0.3);
-  outline-offset: 0;
-}
-
-.form__checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 12px;
-  color: #4b5563;
-}
-
-.form__checkbox input {
-  margin-top: 3px;
-}
-
-.form__submit {
-  margin-top: 4px;
-}
-
-/* FOOTER */
-
-.footer {
-  border-top: 1px solid #f0e6e0;
-  background-color: #ffffff;
-  padding: 16px 0;
-}
-
-.footer__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 13px;
-}
-
-.footer__logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer__logo img {
-  width: 28px;
-  height: 28px;
-}
-
-.footer__nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  color: #4b5563;
-}
-
-.footer__nav a:hover {
-  color: var(--primary);
-}
-
-.footer__policy {
-  color: #6b7280;
-}
-
- /* АДАПТИВ */
-
-/* ——— 1024px и меньше (планшеты) ——— */
-@media (max-width: 1024px) {
-  /* Стрелка остаётся только на десктопе/планшете */
-  .hero__arrow {
-    width: 150px;
-    left: 200px;
-    top: 150px;
-  }
-
-  .hero__inner {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__image-wrap {
-    order: -1;
-  }
-
-  .goal-cards,
-  .about-text,
-  .teachers,
-  .formats,
-  .tracks {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .contact-block {
-    grid-template-columns: 1fr;
-  }
-
-  .header__inner {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    height: auto;
-    padding: 8px 0;
-  }
-
-  .nav {
-    order: 2;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    padding-bottom: 8px;
-  }
-}
-
-/* ——— 768px и меньше (телефоны + бургер) ——— */
-@media (max-width: 768px) {
-  /* НА МОБИЛЬНЫХ СТРЕЛКУ ПРЯЧЕМ */
-  .hero__arrow {
-    display: none !important;
-  }
-
-  .header__inner {
-    height: 64px;
-    flex-wrap: nowrap;
-  }
-
-  /* показываем бургер */
-  .burger {
-    display: flex;
-  }
-
-  /* прячем правую часть (кнопка "Главная" в шапке) */
-  .header__right {
-    display: none;
-  }
-
-  /* меню становится выпадающим под шапкой */
-  .nav {
-    position: absolute;
-    top: 64px; /* высота хедера */
-    left: 0;
-    right: 0;
-    background-color: #ffffff;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 16px 16px;
-    border-bottom: 1px solid #f0e6e0;
-    display: none;  /* по умолчанию скрыто */
-    z-index: 25;
-  }
-
-  /* "Главная" только в мобильном меню, в самом верху списка */
-  .nav-main-group {
-    display: block;
-    width: 100%;
-    order: -1;
-    margin-bottom: 8px;
-  }
-
-  .nav-main-toggle {
-    padding: 8px 0;
-    width: 100%;
-    text-align: left;
-  }
-
-  .nav-main-submenu a {
-    display: block;
-    padding: 4px 0 4px 16px;
-    font-size: 14px;
-  }
-
-  /* когда шапка в состоянии "открыто" — показываем меню */
-  .header--mobile-open .nav {
-    display: flex;
-  }
-}
-
-/* ——— 640px и меньше (узкие телефоны) ——— */
-@media (max-width: 640px) {
-  .goal-cards,
-  .about-text,
-  .teachers,
-  .formats,
-  .tracks {
-    grid-template-columns: 1fr;
-  }
-
-  .hero__inner {
-    gap: 24px;
-    padding: 24px 20px;
-  }
-
-  .section {
-    padding: 28px 0;
-  }
-
-  .section__title {
-    font-size: 20px;
-  }
-
-  .footer__inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero__title-top,
-  .hero__title-main {
-    font-size: 32px;
-    line-height: 1.2;
-  }
-
-  .hero__btn {
-    margin-top: 32px;
-  }
-}
-
-/* ——— 480px и меньше (самые маленькие) ——— */
-@media (max-width: 480px) {
-  /* тут можно при необходимости чуть уменьшить шрифты
-     или кнопки, но стрелку уже не трогаем — её нет */
-}
+index.html
++123
+-88
+
+@@ -104,167 +104,192 @@
+    <div class="container">
+
+      <h2 class="section__title">
+        В ЧЕМ <span class="section__title-accent">НАША ЦЕЛЬ?</span>
+      </h2>
+
+      <div class="goal-cards">
+
+        <article class="goal-card goal-card--peach">
+          <h3>Поддержать студентов</h3>
+          <p>Поддержать студентов на каждом этапе обучения.</p>
+        </article>
+
+        <article class="goal-card goal-card--mint">
+          <h3>Разделить уникальный опыт</h3>
+          <p>Разделить уникальный опыт и знания наших учителей с учениками.</p>
+        </article>
+
+        <article class="goal-card goal-card--blue">
+          <h3>Расширить мировоззрение</h3>
+          <p>Расширить мировоззрение наших учеников.</p>
+        </article>
+
+      </div>
+
+      <div class="about-text">
+        <p class="about-line">
+         <strong> Осваивайте любые предметы легко и интересно,</strong>
+          <span class="accent">с опытными преподавателями,которым можно доверять.</span>
+        </p>
+        <p>
+         <strong> Мы предлагаем комфортные занятия и максимальную эффективность, а также
+          свободный график и интересные домашние задания.</strong>
+        </p>
+      </div>
+
+     <section class="section section--white" id="teachers">
+  <div class="container">
+
+    <h2 class="section__title section__title--left">
+    <section class="section" id="teachers">
+  <div class="container">
+
+    <h2 class="section__title section__title--left">
+    <section class="section" id="teachers">
+  <div class="container">
+
+    <h2 class="section__title section__title--left">
+  <!-- НАШИ ПРЕПОДАВАТЕЛИ -->
+<section class="section section--teachers" id="teachers">
+  <div class="container">
+    <h2 class="section__title section__title--left">
+      НАШИ ПРЕПОДАВАТЕЛИ
+    </h2>
+      <div class="about-text">
+        <p class="about-line">
+          <strong>Осваивайте любые предметы легко и интересно,</strong>
+          <span class="accent">с опытными преподавателями, которым можно доверять.</span>
+        </p>
+        <p>
+          <strong>Мы предлагаем комфортные занятия и максимальную эффективность, а также
+            свободный график и интересные домашние задания.</strong>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- НАШИ ПРЕПОДАВАТЕЛИ -->
+  <section class="section section--teachers" id="teachers">
+    <div class="container">
+      <h2 class="section__title section__title--left">
+        НАШИ ПРЕПОДАВАТЕЛИ
+      </h2>
+
+    <div class="teachers-slider">
+
+      <!-- Кнопка НАЗАД -->
+      <button class="teachers-slider__btn teachers-slider__btn--prev"
+              type="button"
+              aria-label="Предыдущие преподаватели">
+        ‹
+      </button>
+
+      <!-- “Окно” слайдера -->
+      <div class="teachers-slider__viewport">
+        <!-- Лента с учителями -->
+        <div class="teachers-slider__track">
+          <!-- 1 -->␍␊
+          <article class="teacher-card">␍␊
+            <div class="teacher-card__photo-wrap">␍␊
+              <div class="teacher-card__photo">␍␊
+          <!-- 1 -->␊
+          <article class="teacher-card">␊
+            <div class="teacher-card__photo-wrap">␊
+              <div class="teacher-card__photo">␊
+                <img src="img/teacher-1.jpg" alt="Лапина Анна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-cae.png" alt="Сертификат CAE">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Лапина Анна</h3>
+            <p class="teacher-card__subject teacher-card__subject--english">
+              Английский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен CAE-C2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- 2 -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-2.jpg" alt="Гудкова Елизавета">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-hsk.png" alt="Экзамен HSK3">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Гудкова Елизавета</h3>
+            <p class="teacher-card__subject teacher-card__subject--chines">
+              Китайский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен HSK3</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- 3 -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
+            <p class="teacher-card__subject teacher-card__subject--spanies">
+              Испанский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен DELE-B2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          
+          <!-- 4 -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
+            <p class="teacher-card__subject teacher-card__subject--spanies">
+              Испанский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен DELE-B2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- дальше просто добавляешь ещё teacher-card -->
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+
+          <!-- 4 (копия 1) -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-1.jpg" alt="Лапина Анна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-cae.png" alt="Сертификат CAE">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Лапина Анна</h3>
+            <p class="teacher-card__subject teacher-card__subject--english">
+              Английский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен CAE-C2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- 5 (копия 2) -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-2.jpg" alt="Гудкова Елизавета">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-hsk.png" alt="Экзамен HSK3">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Гудкова Елизавета</h3>
+            <p class="teacher-card__subject teacher-card__subject--chines">
+              Китайский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен HSK3</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+
+          <!-- 6 (копия 3) -->
+          <article class="teacher-card">
+            <div class="teacher-card__photo-wrap">
+              <div class="teacher-card__photo">
+                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
+              </div>
+              <div class="teacher-card__badge">
+                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
+              </div>
+            </div>
+            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
+            <p class="teacher-card__subject teacher-card__subject--spanies">
+              Испанский язык
+            </p>
+            <p class="teacher-card__exam">Экзамен DELE-B2</p>
+            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- Кнопка ВПЕРЁД -->
+      <button class="teachers-slider__btn teachers-slider__btn--next"
+              type="button"
+              aria-label="Следующие преподаватели">
+        ›
+      </button>
+    </div>
+
+    <!-- точки-пагинация -->
+    <div class="teachers-slider__dots"></div>
+  </div>
+</section>
+
+
+
+  <!-- ПОЧЕМУ ВЫБИРАЮТ НАС -->
+<section class="section section--why" id="why">
+  <div class="container">
+
+ <h2 class="why-title-main">ПОЧЕМУ ВЫБИРАЮТ НАС?</h2>
+<h3 class="why-title-sub">ПОТОМУ ЧТО ЗАНЯТИЯ С НАМИ ЭТО:</h3>
+
+@@ -447,108 +472,118 @@
+        navMainGroup.classList.toggle('nav-main-group--open');
+      });
+    }
+
+    // Клик вне — закрываем всё
+    document.addEventListener('click', function () {
+      if (dropdown) dropdown.classList.remove('dropdown--open');
+      if (header) header.classList.remove('header--mobile-open');
+      if (navMainGroup) navMainGroup.classList.remove('nav-main-group--open');
+    });
+  });
+</script>
+
+<script>
+  (function () {
+    const slider = document.querySelector('.teachers-slider');
+    if (!slider) return;
+
+    const viewport = slider.querySelector('.teachers-slider__viewport');
+    const track = slider.querySelector('.teachers-slider__track');
+    const prevBtn = slider.querySelector('.teachers-slider__btn--prev');
+    const nextBtn = slider.querySelector('.teachers-slider__btn--next');
+    const dotsContainer = slider.querySelector('.teachers-slider__dots');
+    const cards = Array.from(track.children);
+
+    let perView = 3; // по умолчанию␍␊
+    let page = 0;␍␊
+␍␊
+    function calcPerView() {␍␊
+      const w = window.innerWidth;␍␊
+      if (w <= 768) {
+        perView = 2;   // телефоны
+      } else if (w <= 1024) {␍␊
+        perView = 4;   // планшеты
+      } else {␍␊
+        perView = 3;   // десктоп
+      }␍␊
+      track.style.setProperty('--per-view', perView);␍␊
+    }␍␊
+␍␊
+    function pagesCount() {␍␊
+      return Math.ceil(cards.length / perView);
+    }␍␊
+    let perView = 3; // по умолчанию␊
+    let page = 0;␊
+␊
+    function calcPerView() {␊
+      const w = window.innerWidth;␊
+      if (w <= 640) {
+        perView = 1;
+      } else if (w <= 1024) {␊
+        perView = 2;
+      } else {␊
+        perView = 3;
+      }␊
+      track.style.setProperty('--per-view', perView);␊
+    }␊
+␊
+    function pagesCount() {␊
+      return Math.max(1, Math.ceil(cards.length / perView));
+    }␊
+
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      const count = pagesCount();
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'teachers-slider__dot' + (i === page ? ' is-active' : '');
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = dotsContainer.querySelectorAll('.teachers-slider__dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === page);
+      });
+    }
+
+    function goToPage(newPage) {
+      const count = pagesCount();
+      if (!count) return;
+
+      page = (newPage + count) % count;
+
+      const offset = page * viewport.offsetWidth;
+      track.style.transform = `translateX(-${offset}px)`;
+
+      updateDots();
+    }
+    function goToPage(newPage) {
+      const count = pagesCount();
+      if (!count) return;
+
+      page = (newPage + count) % count;
+
+      const step = viewport.clientWidth;
+      const maxOffset = Math.max(0, track.scrollWidth - viewport.clientWidth);
+      const offset = Math.min(page * step, maxOffset);
+
+      track.style.transform = `translateX(-${offset}px)`;
+
+      updateDots();
+    }
+
+    let resizeTimeout;
+    function onResize() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const oldPerView = perView;
+        calcPerView();
+        if (perView !== oldPerView) {
+          page = 0;
+          buildDots();
+          goToPage(0);
+        } else {
+          goToPage(page);
+        }
+      }, 150);
+    }
+
+    calcPerView();
+    buildDots();
+    goToPage(0);
+    function init() {
+      calcPerView();
+      buildDots();
+      requestAnimationFrame(() => goToPage(0));
+    }
+
+    window.addEventListener('load', () => {
+      requestAnimationFrame(init);
+    });
+    init();
+
+    prevBtn.addEventListener('click', () => goToPage(page - 1));
+    nextBtn.addEventListener('click', () => goToPage(page + 1));
+    window.addEventListener('resize', onResize);
+  })();
+</script>
+
+
+
+
+</body>
+</html>
 
 
 
