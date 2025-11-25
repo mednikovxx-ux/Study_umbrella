@@ -464,13 +464,7 @@ html {
   margin-bottom: 34px;
 }
 
-/* Преподаватели */
-
-.teachers {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 26px;
-}
+/* Преподаватели: карточки */
 
 .teacher-card {
   text-align: center;
@@ -480,7 +474,7 @@ html {
 
 .teacher-card__photo-wrap {
   position: relative;
-  width: 280px;          /* кружок чуть больше */
+  width: 280px;
   height: 280px;
   margin: 0 auto 24px;
 }
@@ -503,7 +497,7 @@ html {
 .teacher-card__badge {
   position: absolute;
   top: 0;
-  right: 0px;
+  right: 0;
   width: 110px;
   height: 110px;
   border-radius: 50%;
@@ -515,7 +509,6 @@ html {
   object-fit: contain;
   display: block;
 }
-
 
 .teacher-card__name {
   font-size: 15px;
@@ -542,17 +535,22 @@ html {
   font-weight: 500;
   margin-top: 2px;
 }
+
 .teacher-card__subject--english {
-  color: #D65655;        /* красный для Истории */
+  color: #D65655;
 }
 
 .teacher-card__subject--chines {
-  color: #1a9bb8;        /* бирюзовый/синий */
+  color: #1a9bb8;
 }
 
 .teacher-card__subject--spanies {
-  color: #FFC144;        /* оранжевый */
-  .teachers-slider {
+  color: #FFC144;  /* ← ВАЖНО: тут закрываем правило */
+}
+
+/* ====== СЛАЙДЕР ПРЕПОДАВАТЕЛЕЙ ====== */
+
+.teachers-slider {
   position: relative;
   overflow: hidden;
   padding: 20px 40px;
@@ -565,11 +563,11 @@ html {
 }
 
 .teacher-card {
-  min-width: calc((100% - 48px) / 3); /* 3 карточки */
+  min-width: calc((100% - 48px) / 3); /* 3 карточки на десктопе */
   background: #fff;
   border-radius: 22px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-  padding-bottom: 20px;
+  padding: 24px 16px 20px;
 }
 
 /* Стрелки твоего дизайна */
@@ -610,7 +608,7 @@ html {
   }
 }
 
-}
+
 /* НАШИ ПРОГРАММЫ И ФОРМАТЫ */
 
 
@@ -1457,6 +1455,7 @@ html {
 #contacts {
   scroll-margin-top: 100px;
 }
+
 
 
 
