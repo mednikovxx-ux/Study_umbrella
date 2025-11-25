@@ -552,6 +552,64 @@ html {
 
 .teacher-card__subject--spanies {
   color: #FFC144;        /* оранжевый */
+  .teachers-slider {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 40px;
+}
+
+.teachers-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.45s ease;
+}
+
+.teacher-card {
+  min-width: calc((100% - 48px) / 3); /* 3 карточки */
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  padding-bottom: 20px;
+}
+
+/* Стрелки твоего дизайна */
+.teachers-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.teachers-arrow img {
+  width: 48px;
+  height: auto;
+}
+
+.teachers-arrow--left {
+  left: -10px;
+}
+
+.teachers-arrow--right {
+  right: -10px;
+}
+
+/* Планшет — по 2 */
+@media (max-width: 900px) {
+  .teacher-card {
+    min-width: calc((100% - 24px) / 2);
+  }
+}
+
+/* Телефон — по 1 */
+@media (max-width: 600px) {
+  .teacher-card {
+    min-width: 100%;
+  }
+}
+
 }
 /* НАШИ ПРОГРАММЫ И ФОРМАТЫ */
 
@@ -1399,6 +1457,7 @@ html {
 #contacts {
   scroll-margin-top: 100px;
 }
+
 
 
 
