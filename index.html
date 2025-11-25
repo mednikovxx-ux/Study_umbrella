@@ -600,55 +600,51 @@
 
 
 <script>
-  const track   = document.querySelector('.teachers-track');
-  const cards   = document.querySelectorAll('.teacher-card');
-  const btnPrev = document.querySelector('.teachers-arrow--left');
-  const btnNext = document.querySelector('.teachers-arrow--right');
+const track = document.querySelector('.teachers-track');
+const cards = document.querySelectorAll('.teacher-card');
+const btnPrev = document.querySelector('.teachers-arrow--left');
+const btnNext = document.querySelector('.teachers-arrow--right');
 
-  let index = 0;
-  let cardsPerSlide = 3;
+function isMobile() {
+  return window.innerWidth < 900;
+}
 
-  function updateCardsPerSlide() {
-    if (window.innerWidth < 600)      cardsPerSlide = 1;
-    else if (window.innerWidth < 900) cardsPerSlide = 2;
-    else                              cardsPerSlide = 3;
+let index = 0;
+let cardsPerSlide = 3;
 
-    // чтобы после ресайза не уехать за край
-    if (index + cardsPerSlide > cards.length) {
-      index = Math.max(0, cards.length - cardsPerSlide);
-    }
-    updateSlider();
-  }
+function updateCardsPerSlide() {
+  if (window.innerWidth < 600) cardsPerSlide = 1;
+  else if (window.innerWidth < 900) cardsPerSlide = 2;
+  else cardsPerSlide = 3;
+}
 
-  function updateSlider() {
-    if (!cards.length) return;
-    const gap = 24; // такой же, как в CSS
-    const cardWidth = cards[0].clientWidth + gap;
-    track.style.transform = `translateX(-${index * cardWidth}px)`;
-  }
+function updateSlider() {
+  if (isMobile()) return; // на мобилке — не листаем кнопками
+  const cardWidth = cards[0].clientWidth + 24;
+  track.style.transform = `translateX(-${index * cardWidth}px)`;
+}
 
-  btnNext.addEventListener('click', () => {
-    if (index + cardsPerSlide < cards.length) {
-      index += cardsPerSlide;
-      updateSlider();
-    }
-  });
+btnNext.onclick = () => {
+  if (isMobile()) return;
+  if (index + cardsPerSlide < cards.length) index += cardsPerSlide;
+  updateSlider();
+};
 
-  btnPrev.addEventListener('click', () => {
-    if (index - cardsPerSlide >= 0) {
-      index -= cardsPerSlide;
-      updateSlider();
-    }
-  });
+btnPrev.onclick = () => {
+  if (isMobile()) return;
+  if (index - cardsPerSlide >= 0) index -= cardsPerSlide;
+  updateSlider();
+};
 
-  window.addEventListener('resize', updateCardsPerSlide);
+updateCardsPerSlide();
+window.onresize = () => {
+  updateCardsPerSlide();
+  updateSlider();
+};
 
-  // первый просчёт
-  window.addEventListener('load', () => {
-    updateCardsPerSlide();
-  });
 </script>
 
 
 </body>
 </html>
+
