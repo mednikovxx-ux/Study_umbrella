@@ -564,7 +564,7 @@ html {
 
 .teacher-card {
   min-width: calc((100% - 48px) / 3); /* 3 карточки на десктопе */
-  background: #fff;
+  background: #EFEBE6;
   border-radius: 22px;
   box-shadow: 0 18px 40px rgba(0,0,0,0.08);
   padding: 24px 16px 20px;
@@ -1455,6 +1455,7 @@ html {
 #contacts {
   scroll-margin-top: 100px;
 }
+
 
 
 
