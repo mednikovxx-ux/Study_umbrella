@@ -1,4 +1,257 @@
-@@ -252,143 +252,127 @@
+html {
+  scroll-behavior: smooth;
+}
+/* Цвета */
+:root {
+  --primary: #f34b4b;
+  --text-main: #2c2c2c;
+  --bg-soft: #F9FAF5;
+
+  --accent-yellow: #ffd766;
+  --accent-mint: #c7f0e9;
+  --accent-peach: #ffe5d4;
+  --accent-lilac: #e9d7ff;
+  --accent-blue: #cde8ff;
+}
+
+/* HEADER */
+
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0e6e0;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo__img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Горизонтальное меню на десктопе */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+
+.nav a {
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.2s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 24px;
+}
+
+/* Кнопка "Главная" справа (десктоп) */
+.btn--main {
+  padding: 10px 24px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid #d6d6d6;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Выпадающее меню справа (десктоп) */
+.dropdown {
+  position: relative;
+}
+
+.dropdown__menu {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  padding: 8px 0;
+  min-width: 220px;
+  display: none;
+  z-index: 30;
+}
+
+.dropdown__menu a {
+  display: block;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #111;
+  text-decoration: none;
+}
+
+.dropdown__menu a:hover {
+  background-color: #f3f4f6;
+}
+
+.dropdown--open .dropdown__menu {
+  display: block;
+}
+
+/* Бургер по умолчанию скрыт (только для мобилки) */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid #d6d6d6;
+  background-color: #ffffff;
+  padding: 0;
+  margin-right: 12px;
+}
+
+.burger span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background-color: #111;
+  border-radius: 999px;
+}
+
+/* "Главная" для мобильного меню — по умолчанию скрыта (только моб) */
+.nav-main-group {
+  position: relative;
+  display: none;       /* важное: на десктопе не показываем */
+}
+
+.nav-main-toggle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav-main-submenu {
+  display: none;
+  margin-top: 6px;
+}
+
+.nav-main-submenu a {
+  display: block;
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+.nav-main-group--open .nav-main-submenu {
+  display: block;
+}
+
+/* ===== АДАПТИВ ШАПКИ ===== */
+
+@media (max-width: 768px) {
+  .header__inner {
+    height: 64px;
+  }
+
+  /* показываем бургер */
+  .burger {
+    display: flex;
+  }
+
+  /* убираем правую кнопку "Главная" на мобилке */
+  .header__right {
+    display: none;
+  }
+
+  /* перестраиваем меню в выпадающий список под шапкой */
+  .nav {
+    position: absolute;
+    top: 64px; /* высота шапки */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px 16px;
+    border-bottom: 1px solid #f0e6e0;
+    display: none;          /* по умолчанию скрыто */
+    z-index: 25;
+  }
+
+  /* когда хедер в состоянии mobile-open — показываем меню */
+  .header--mobile-open .nav {
+    display: flex;
+  }
+
+  /* "Главная" в мобильном меню */
+  .nav-main-group {
+    display: block;    /* теперь показываем */
+    width: 100%;
+    order: -1;         /* именно это поднимает её НА САМО ВЕРХУ */
+    margin-bottom: 8px;
+  }
+
+  .nav-main-toggle {
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-main-submenu {
+    margin-top: 4px;
+    padding-left: 16px;
+  }
+
+  .nav-main-submenu a {
+    padding: 4px 0;
+  }
+}
+
+
+/* Кнопки */
+
+.btn {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  background-color: transparent;
   white-space: nowrap;
 }
 
@@ -31,28 +284,6 @@
 
 
 
-/* HERO */
-.btn--outline {
-  border-color: #d1d5db;
-  background-color: transparent;
-}
-.hero__arrow {
-  position: absolute;
-  width: 70px;       /* маленькая стрелка */
-  left: 40px;        /* сдвиг ближе к тексту */
-  top: 200px;        /* ниже под кнопкой */
-  opacity: 0.9;
-}
-
-
-
-/* HERO */
-.btn--outline {
-  border-color: #d1d5db;
-  background-color: transparent;
-}
-
-
 
 /* HERO */
 
@@ -74,37 +305,21 @@
 }
 
 .hero__content {
-  position: relative; /* чтобы стрелка позиционировалась внутри текста */
+  position: relative; /* стрелка будет привязана к этому блоку */
 }
+
+/* стрелка под текстом */
 .hero__arrow {
   position: absolute;
-  width: 160px;
-  left: 220px;
-  top: 150px;
-  opacity: 0.95;
+  width: 70px;          /* размер стрелки */
+  height: auto;         /* чтобы не раздувалась */
+  left: 190px;          /* подвинешь под себя */
+  top: 155px;           /* подвинешь под себя */
+  opacity: 0.9;
   pointer-events: none;
+  image-rendering: crisp-edges;
 }
-.hero__content {
-  position: relative; /* чтобы стрелка позиционировалась внутри текста */
-}
-.hero__arrow {
-  position: absolute;
-  width: 180px;
-  left: 260px; /* отрегулируем после — сейчас это контрольная точка */
-  top: 140px;
-  pointer-events: none;
-}
-.hero__content {
-  position: relative; /* чтобы стрелка позиционировалась внутри текста */
-}
-.hero__arrow {
-  position: absolute;
-  width: 160px;
-  left: 220px;
-  top: 150px;
-  opacity: 0.95;
-  pointer-events: none;
-}
+
 .hero__label {
   font-size: 13px;
   font-weight: 600;
@@ -145,32 +360,6 @@
   display: flex;
   justify-content: center;
 }
-.hero__btn {
-  margin-top: 60px;
-}
-
-/* стрелка под текстом */
-.hero__arrow {
-  position: absolute;
-  width: 70px;      /* размер стрелки */
-  left: 190px;      /* сдвиг вправо от текста */
-  top: 155px;       /* сдвиг вниз от верхнего края hero__content */
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-.hero__image-wrap {
-  display: flex;
-  justify-content: center;
-}
-.hero__btn {
-  margin-top: 60px;
-}
-
-.hero__image-wrap {
-  display: flex;
-  justify-content: center;
-}
 
 .hero__image {
   width: 100%;
@@ -196,493 +385,1079 @@
   background-color: var(--bg-soft);
 }
 
-@@ -471,57 +455,60 @@
+.section__title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.section__title--left {
+  text-align: left;
+}
+
+.section__title-accent {
+  color: var(--primary);
+}
+
+.section__title-accent--blue {
+  color: #6ec4d8;
+}
+/* Текстовые блоки под секцией "В ЧЕМ НАША ЦЕЛЬ?" */
+
+.about-line {
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 600;
+  max-width: 580px;
+}
+
+.about-line .accent {
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+}
+
+/* Цели */
+
+.goal-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.goal-card {
+  padding: 20px 22px;
+  border-radius: 24px;
+  font-size: 16px;
+
+  /* Лёгкая тень как в фигме */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Заголовок внутри карточки */
+.goal-card h3 {
+  margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* НОВЫЕ ЦВЕТА карточек */
+.goal-card--peach {
+  background-color: rgba(255, 193, 67, 0.5); /* мягкий персиковый */
+}
+
+.goal-card--mint {
+  background-color: rgba(73, 154, 155, 0.5); /* мягкий мятный */
+}
+
+.goal-card--blue {
+  background-color: rgba(220, 61, 75, 0.5); /* мягкий голубой */
+}
+
+.about-text {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+  font-size: 17px;
+  line-height: 1.45;
   margin-bottom: 34px;
 }
 
-/* ===== НАШИ ПРЕПОДАВАТЕЛИ (СЛАЙДЕР) ===== */
+/* Преподаватели */
 
-.section--teachers {
-  background-color: #F9FAF5; /* тот же мягкий фон, что и у других блоков */
+.teachers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
 }
 
-/* обёртка слайдера */
-.teachers-slider {
+.teacher-card {
+  text-align: center;
+}
+
+/* ФОТО + БЕЙДЖ */
+
+.teacher-card__photo-wrap {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 32px;
+  width: 280px;          /* кружок чуть больше */
+  height: 280px;
+  margin: 0 auto 24px;
 }
 
-/* окно */
-.teachers-slider__viewport {
+.teacher-card__photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   overflow: hidden;
-  flex: 1 1 auto;
 }
 
-/* лента с карточками */
-.teachers-slider__track {
-  --gap: 26px;
-  display: flex;
-  flex-wrap: nowrap;
-  gap: var(--gap);
-  flex: 0 0 auto;
-  min-width: 100%;
-  transition: transform 0.4s ease;
+.teacher-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* ОДНА карточка: ширина задаётся скриптом */
-.teacher-card {
-  flex: 0 0 auto;
-  width: 260px;
-  max-width: 100%;
+/* маленький кружок-бейдж */
+.teacher-card__badge {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+}
+
+.teacher-card__badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+.teacher-card__name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.teacher-card__subject {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 0.03em;
+  font-family: "Kurale", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.teacher-card__exam {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.teacher-card__exp {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.teacher-card__subject--english {
+  color: #D65655;        /* красный для Истории */
+}
+
+.teacher-card__subject--chines {
+  color: #1a9bb8;        /* бирюзовый/синий */
+}
+
+.teacher-card__subject--spanies {
+  color: #FFC144;        /* оранжевый */
+}
+/* НАШИ ПРОГРАММЫ И ФОРМАТЫ */
+
+
+/* === ПОЧЕМУ ВЫБИРАЮТ НАС === */
+
+/* Фон секции и общий отступ */
+.section--why {
+  background-color: #F9FAF5;             /* фон блока как в макете */
+  font-family: "Onest", sans-serif;
+  padding: 60px 0;
+}
+
+/* Две строки заголовка */
+.why-title-main {
   text-align: center;
-}
-.teachers-slider__track {
-  --gap: 26px;
-  --per-view: 3;                /* по умолчанию 3 карточки */
-  display: flex;
-  gap: var(--gap);
-  transition: transform 0.4s ease;
-}
-.teachers-slider__track {
-  --gap: 26px;
-  --per-view: 3;                /* по умолчанию 3 карточки */
-  display: flex;
-  gap: var(--gap);
-  flex: 0 0 auto;
-  width: max-content;
-  min-width: 100%;
-  transition: transform 0.4s ease;
+  font-size: 32px;
+  font-weight: 800;
+  color: #E54545;                        /* красный */
+  margin-bottom: 4px;
 }
 
-/* ОДНА карточка: ширина зависит от --per-view */
-.teacher-card {
-  flex: 0 0 calc(
-    (100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view)
-  );
+.why-title-sub {
   text-align: center;
-}
-
-/* кнопки перелистывания */
-.teachers-slider__btn {
-  border: none;
-  background: #ffffff;
-  border-radius: 999px;
-  width: 40px;
-  height: 40px;
   font-size: 24px;
-  line-height: 1;
+  font-weight: 800;
+  color: #000;                           /* чёрный */
+  margin-bottom: 32px;
+}
+
+/* Сетка карточек внутри секции */
+.section--why .formats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 10px;
+}
+
+/* Карточка */
+.section--why .format-card {
+  padding: 22px 24px;
+  border-radius: 26px;
+  font-size: 15px;
+  line-height: 1.45;
+  border: none;
+  color: #2b2626;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08); /* лёгкая тень */
+}
+
+/* Внутренняя плашка-заголовок (Современно, Доступно и т.п.) */
+.section--why .format-card__label {
+  display: inline-block;
+  padding: 7px 26px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(0, 0, 0, 0.8);
+  background: transparent;              /* фон = фон карточки */
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* Текст в карточке */
+.section--why .format-card p {
+  margin: 0;
+}
+
+/* ЯРКИЕ цвета карточек (как в макете) */
+.section--why .format-card--soft {
+  background-color: rgba(220, 61, 75, 0.5);            /* розовый */
+}
+
+.section--why .format-card--peach {
+  background-color: rgba(255, 193, 67, 0.5);            /* жёлтый/оранжевый */
+}
+
+.section--why .format-card--mint {
+  background-color: rgba(73, 154, 155, 0.5);            /* мятный */
+}
+
+.section--why .format-card--lilac {
+  background-color: rgba(202, 138, 60, 0.5);            /* лиловый */
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+  .section--why .formats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .section--why .formats {
+    grid-template-columns: 1fr;
+  }
+}
+/* ==== НАШИ ПРОГРАММЫ И ФОРМАТЫ ==== */
+
+.section--programs {
+  background-color: #EDEDED;          /* тот же серый фон, что и у hero */
+  border-radius: 40px;
+  padding: 24px 56px 40px
+}
+
+/* Заголовок: "НАШИ ПРОГРАММЫ" синим, "И ФОРМАТЫ" красным */
+.programs-title-main {
+  color: #0d9aa8;
+  display: block;
+}
+
+.programs-title-accent {
+  color: #e54545;
+  display: block;
+}
+
+/* Общая сетка */
+.programs-grid {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Верхний ряд: первая карточка + текст справа */
+.programs-grid__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr); /* первая карточка ~полторы нижних */
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Нижний ряд: 3 карточки */
+.programs-grid__bottom {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Карточка */
+.program-card {
+  background-color: #F1EADF;         /* F1EADF */
+  border-radius: 24px;
+  padding: 20px 26px 26px;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* верхняя просто растягивается по высоте строки */
+.program-card--wide {
+  height: 100%;
+}
+
+/* Круглая иконка */
+.program-card__icon {
+  width: 110px;           /* ← Увеличиваешь иконки здесь (можно 90–110px) */
+  height: 110px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #E5D8C7;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;        /* ← Важно: запрет сжимать контейнер */
+}
+
+.program-card__icon img {
+  width: 100%;            /* ← Управляет размером самой картинки */
+  height: 100%;
+  object-fit: contain;   /* ← Чтобы ничего не растягивалось */
+}
+
+
+/* Текст в карточке */
+.program-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.program-card__text {
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+/* Кнопка "Записаться" */
+.program-card__btn {
+  margin-top: 18px;
+  align-self: flex-start;
+  padding: 8px 26px;
+  border-radius: 999px;
+  border: 1px solid #111827;
+  background-color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+}
+
+/* Текст справа */
+.programs-info {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.programs-info__accent {
+  color: #e54545;          /* красный кусок текста */
+  font-weight: 700;
+}
+/* ---- Адаптив для блока программ ---- */
+
+/* Планшеты и меньше */
+@media (max-width: 1024px) {
+  .programs-grid__top {
+    grid-template-columns: 1fr;
+  }
+
+  /* текст уходит наверх, как в макете */
+  .programs-info {
+    order: -1;
+  }
+
+  .programs-grid__bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Телефоны */
+@media (max-width: 640px) {
+  .programs-grid__bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* === ДОСТУПНЫЕ НАПРАВЛЕНИЯ === */
+
+.section--tracks {
+  background-color: #F9FAF5;
+  font-family: "Onest", system-ui, sans-serif;
+}
+
+/* Заголовок красный + Onest */
+.section--tracks .section__title {
+  color: #FF5A5A;
+  font-family: "Onest", system-ui, sans-serif;
+  font-weight: 800;
+}
+
+/* 3 карточки в ряд */
+.tracks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Карточка 50/50, фиксированной высоты */
+.track-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;       /* 50% / 50% для всех по умолчанию */
+  background-color: #EFEBE6;
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+  min-width: 0;
+  height: 320px;
+}
+
+/* Специально для третьей – картинка чуть уже, тексту больше места */
+.track-card--narrow {
+  grid-template-columns: 0.4fr 0.6fr;   /* ~40% / 60% */
+}
+
+/* Левая часть — картинка */
+.track-card__image-wrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.track-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Правая часть — текст + стрелка */
+.track-card__content {
+  padding: 20px 22px;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* заголовок / текст / стрелка */
+  align-items: start;
+  min-width: 0;
+}
+
+/* Заголовок и текст — Onest */
+.track-card__title {
+  font-family: "Onest", system-ui, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.track-card__text {
+  font-family: "Onest", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* Стрелка-кнопка */
+.track-card__arrow {
+  justify-self: end;
+  margin-top: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid #111827;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.track-card__arrow img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Адаптив: планшет — 2 карточки, мобилка — 1 */
+@media (max-width: 1024px) {
+  .tracks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .tracks {
+    grid-template-columns: 1fr;
+  }
+
+  .track-card,
+  .track-card--narrow {
+    grid-template-columns: 1fr;  /* картинка сверху, текст снизу */
+    height: auto;
+  }
+
+  .track-card__image-wrap {
+    height: 220px;
+  }
+}
+
+/* === КОНТАКТЫ / ФОРМА === */
+
+.section--contacts {
+  background-color: #F9FAF5; /* фон как у остальных мягких блоков */
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* ЛЕВАЯ КОЛОНКА */
+
+.contact__left {
+  position: relative;
+}
+
+.contact__title {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  color: #121826;
+  margin-bottom: 24px;
+}
+
+.contact__title-accent {
+  color: #ff5a5a;
+}
+
+.contact__text {
+  font-family: "Onest", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #1f2933;
+  margin-bottom: 12px;
+}
+
+/* стрелка под текстом, указывающая на форму */
+.contact__arrow {
+  position: absolute;
+  left: 510px;   /* ТВОЁ значение, не трогаю :) */
+  top: 210px;
+  width: 120px;
+  pointer-events: none;
+}
+
+/* "Свяжитесь с нами!" */
+
+.contact__subtitle {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 80px;  /* чтобы было под стрелкой */
+  margin-bottom: 16px;
+}
+
+/* кружочки соцсетей */
+
+.contact__socials {
+  display: flex;
+  gap: 16px;
+}
+
+.contact__social {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-index.html
-+123
--88
 
-@@ -104,167 +104,192 @@
-    <div class="container">
+.contact__social img {
+  max-width: 100%;
+  height: auto;
+}
 
-      <h2 class="section__title">
-        В ЧЕМ <span class="section__title-accent">НАША ЦЕЛЬ?</span>
-      </h2>
+/* цвета кружочков */
+.contact__social--vk {
+  background-color: #3b5a98;
+}
 
-      <div class="goal-cards">
+.contact__social--tg {
+  background-color: #1da1f2;
+}
 
-        <article class="goal-card goal-card--peach">
-          <h3>Поддержать студентов</h3>
-          <p>Поддержать студентов на каждом этапе обучения.</p>
-        </article>
+.contact__social--mail {
+  background-color: #f6b93b;
+}
 
-        <article class="goal-card goal-card--mint">
-          <h3>Разделить уникальный опыт</h3>
-          <p>Разделить уникальный опыт и знания наших учителей с учениками.</p>
-        </article>
+.contact__social:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+}
 
-        <article class="goal-card goal-card--blue">
-          <h3>Расширить мировоззрение</h3>
-          <p>Расширить мировоззрение наших учеников.</p>
-        </article>
+/* ПРАВАЯ КОЛОНКА — ФОРМА */
 
-      </div>
+.contact-form {
+  transform: scale(0.9);
+  transform-origin: top right; /* чтобы уменьшалась в нужную сторону */
+  position: relative;              /* нужно для солдата */
+  background-color: #EFEBE6;       /* как в фигме */
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+  padding: 32px 36px 32px;
+  font-family: "Onest", system-ui, sans-serif;
+}
 
-      <div class="about-text">
-        <p class="about-line">
-         <strong> Осваивайте любые предметы легко и интересно,</strong>
-          <span class="accent">с опытными преподавателями,которым можно доверять.</span>
-        </p>
-        <p>
-         <strong> Мы предлагаем комфортные занятия и максимальную эффективность, а также
-          свободный график и интересные домашние задания.</strong>
-        </p>
-      </div>
+/* солдатик в правом верхнем углу */
+.contact-form__guard {
+  position: absolute;
+  top: -40px;
+  right: 26px;
+  width: 60px;
+  height: auto;
+}
+ 
 
-     <section class="section section--white" id="teachers">
-  <div class="container">
+/* заголовок формы */
 
-    <h2 class="section__title section__title--left">
-    <section class="section" id="teachers">
-  <div class="container">
+.contact-form__title {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
 
-    <h2 class="section__title section__title--left">
-    <section class="section" id="teachers">
-  <div class="container">
+/* поле + подпись */
 
-    <h2 class="section__title section__title--left">
-  <!-- НАШИ ПРЕПОДАВАТЕЛИ -->
-<section class="section section--teachers" id="teachers">
-  <div class="container">
-    <h2 class="section__title section__title--left">
-      НАШИ ПРЕПОДАВАТЕЛИ
-    </h2>
-      <div class="about-text">
-        <p class="about-line">
-          <strong>Осваивайте любые предметы легко и интересно,</strong>
-          <span class="accent">с опытными преподавателями, которым можно доверять.</span>
-        </p>
-        <p>
-          <strong>Мы предлагаем комфортные занятия и максимальную эффективность, а также
-            свободный график и интересные домашние задания.</strong>
-        </p>
-      </div>
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
 
-    </div>
-  </section>
+.contact-form__field span {
+  color: #374151;
+}
 
-  <!-- НАШИ ПРЕПОДАВАТЕЛИ -->
-  <section class="section section--teachers" id="teachers">
-    <div class="container">
-      <h2 class="section__title section__title--left">
-        НАШИ ПРЕПОДАВАТЕЛИ
-      </h2>
+/* ПРОЗРАЧНЫЕ ПОЛЯ + ТОЛЬКО НИЖНЯЯ ЛИНИЯ */
 
-    <div class="teachers-slider">
+.contact-form__field input,
+.contact-form__field textarea {
+  border: none;
+  border-bottom: 2px solid #C5C5C5;
+  border-radius: 0;
+  padding: 8px 2px 6px;
+  font-size: 14px;
+  font-family: "Poppins", system-ui, sans-serif;
+  outline: none;
+  background-color: transparent;
+}
 
-      <!-- Кнопка НАЗАД -->
-      <button class="teachers-slider__btn teachers-slider__btn--prev"
-              type="button"
-              aria-label="Предыдущие преподаватели">
-        ‹
-      </button>
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  border-bottom-color: #ff5a5a;
+  box-shadow: none;
+}
 
-      <!-- “Окно” слайдера -->
-      <div class="teachers-slider__viewport">
-        <!-- Лента с учителями -->
-        <div class="teachers-slider__track">
-          <!-- 1 -->␍␊
-          <article class="teacher-card">␍␊
-            <div class="teacher-card__photo-wrap">␍␊
-              <div class="teacher-card__photo">␍␊
-          <!-- 1 -->␊
-          <article class="teacher-card">␊
-            <div class="teacher-card__photo-wrap">␊
-              <div class="teacher-card__photo">␊
-                <img src="img/teacher-1.jpg" alt="Лапина Анна">
-              </div>
-              <div class="teacher-card__badge">
-                <img src="img/badge-cae.png" alt="Сертификат CAE">
-              </div>
-            </div>
-            <h3 class="teacher-card__name">Лапина Анна</h3>
-            <p class="teacher-card__subject teacher-card__subject--english">
-              Английский язык
-            </p>
-            <p class="teacher-card__exam">Экзамен CAE-C2</p>
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
+.contact-form__field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
 
-          <!-- 2 -->
-          <article class="teacher-card">
-            <div class="teacher-card__photo-wrap">
-              <div class="teacher-card__photo">
-                <img src="img/teacher-2.jpg" alt="Гудкова Елизавета">
-              </div>
-              <div class="teacher-card__badge">
-                <img src="img/badge-hsk.png" alt="Экзамен HSK3">
-              </div>
-            </div>
-            <h3 class="teacher-card__name">Гудкова Елизавета</h3>
-            <p class="teacher-card__subject teacher-card__subject--chines">
-              Китайский язык
-            </p>
-            <p class="teacher-card__exam">Экзамен HSK3</p>
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
+/* чекбокс */
 
-          <!-- 3 -->
-          <article class="teacher-card">
-            <div class="teacher-card__photo-wrap">
-              <div class="teacher-card__photo">
-                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
-              </div>
-              <div class="teacher-card__badge">
-                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
-              </div>
-            </div>
-            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
-            <p class="teacher-card__subject teacher-card__subject--spanies">
-              Испанский язык
-            </p>
-            <p class="teacher-card__exam">Экзамен DELE-B2</p>
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
+.contact-form__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 16px 0 24px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #4b5563;
+}
 
-          
-          <!-- 4 -->
-          <article class="teacher-card">
-            <div class="teacher-card__photo-wrap">
-              <div class="teacher-card__photo">
-                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
-              </div>
-              <div class="teacher-card__badge">
-                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
-              </div>
-            </div>
-            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
-            <p class="teacher-card__subject teacher-card__subject--spanies">
-              Испанский язык
-            </p>
-            <p class="teacher-card__exam">Экзамен DELE-B2</p>
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
+.contact-form__checkbox input {
+  margin-top: 3px;
+}
 
-          <!-- дальше просто добавляешь ещё teacher-card -->
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
+/* кнопка */
 
+.contact-form__submit {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", system-ui, sans-serif;
+  background-color: #ff5a5a;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
 
-          <!-- 4 (копия 1) -->
-          <article class="teacher-card">
-            <div class="teacher-card__photo-wrap">
-              <div class="teacher-card__photo">
-                <img src="img/teacher-1.jpg" alt="Лапина Анна">
-              </div>
-              <div class="teacher-card__badge">
-                <img src="img/badge-cae.png" alt="Сертификат CAE">
-              </div>
-            </div>
-            <h3 class="teacher-card__name">Лапина Анна</h3>
-            <p class="teacher-card__subject teacher-card__subject--english">
-              Английский язык
-            </p>
-            <p class="teacher-card__exam">Экзамен CAE-C2</p>
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
+.contact-form__submit:hover {
+  background-color: #ff4545;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(255, 90, 90, 0.35);
+}
 
-          <!-- 5 (копия 2) -->
-          <article class="teacher-card">
-            <div class="teacher-card__photo-wrap">
-              <div class="teacher-card__photo">
-                <img src="img/teacher-2.jpg" alt="Гудкова Елизавета">
-              </div>
-              <div class="teacher-card__badge">
-                <img src="img/badge-hsk.png" alt="Экзамен HSK3">
-              </div>
-            </div>
-            <h3 class="teacher-card__name">Гудкова Елизавета</h3>
-            <p class="teacher-card__subject teacher-card__subject--chines">
-              Китайский язык
-            </p>
-            <p class="teacher-card__exam">Экзамен HSK3</p>
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
+/* Адаптив */
 
-          <!-- 6 (копия 3) -->
-          <article class="teacher-card">
-            <div class="teacher-card__photo-wrap">
-              <div class="teacher-card__photo">
-                <img src="img/teacher-3.jpg" alt="Железнякова Ульяна">
-              </div>
-              <div class="teacher-card__badge">
-                <img src="img/badge-dele.png" alt="Экзамен DELE-B2">
-              </div>
-            </div>
-            <h3 class="teacher-card__name">Железнякова Ульяна</h3>
-            <p class="teacher-card__subject teacher-card__subject--spanies">
-              Испанский язык
-            </p>
-            <p class="teacher-card__exam">Экзамен DELE-B2</p>
-            <p class="teacher-card__exp">Опыт преподавания: 3 года</p>
-          </article>
-        </div>
-      </div>
+@media (max-width: 1024px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 
-      <!-- Кнопка ВПЕРЁД -->
-      <button class="teachers-slider__btn teachers-slider__btn--next"
-              type="button"
-              aria-label="Следующие преподаватели">
-        ›
-      </button>
-    </div>
+  /* стрелку на планшетах/мобилках скрываем */
+  .contact__arrow {
+    display: none;
+  }
 
-    <!-- точки-пагинация -->
-    <div class="teachers-slider__dots"></div>
-  </div>
-</section>
+  .contact__subtitle {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact {
+    grid-template-columns: 1fr;
+    justify-items: center;    /* грид-элементы по центру */
+  }
+
+  .contact-form {
+    transform: none;          /* ❗ отключаем scale на телефонах */
+    padding: 24px 20px;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;           /* теперь реально центрируется */
+  }
+
+  .contact__title {
+    font-size: 30px;
+  }
+
+  .contact-form__guard {
+    width: 60px;
+    top: -50px;
+    right: 16px;
+  }
+}
 
 
 
-  <!-- ПОЧЕМУ ВЫБИРАЮТ НАС -->
-<section class="section section--why" id="why">
-  <div class="container">
+/* === FOOTER === */
 
- <h2 class="why-title-main">ПОЧЕМУ ВЫБИРАЮТ НАС?</h2>
-<h3 class="why-title-sub">ПОТОМУ ЧТО ЗАНЯТИЯ С НАМИ ЭТО:</h3>
+.footer {
+  background-color: #FFFFFF;
+  padding: 32px 0;
+  font-family: "Onest", system-ui, sans-serif;
+}
 
-@@ -447,108 +472,118 @@
-        navMainGroup.classList.toggle('nav-main-group--open');
-      });
-    }
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
 
-    // Клик вне — закрываем всё
-    document.addEventListener('click', function () {
-      if (dropdown) dropdown.classList.remove('dropdown--open');
-      if (header) header.classList.remove('header--mobile-open');
-      if (navMainGroup) navMainGroup.classList.remove('nav-main-group--open');
-    });
-  });
-</script>
+.footer__logo img {
+  height: 42px;               /* как в хеддере */
+  width: auto;
+  display: block;
+}
 
-<script>
-  (function () {
-    const slider = document.querySelector('.teachers-slider');
-    if (!slider) return;
+/* ЛЕВЫЕ ССЫЛКИ */
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
 
-    const viewport = slider.querySelector('.teachers-slider__viewport');
-    const track = slider.querySelector('.teachers-slider__track');
-    const prevBtn = slider.querySelector('.teachers-slider__btn--prev');
-    const nextBtn = slider.querySelector('.teachers-slider__btn--next');
-    const dotsContainer = slider.querySelector('.teachers-slider__dots');
-    const cards = Array.from(track.children);
+.footer__nav a {
+  font-weight: 600;
+  font-size: 18px;
+  color: #121826;
+  text-decoration: none;
+  transition: opacity .2s;
+}
 
-    let perView = 3; // по умолчанию␍␊
-    let page = 0;␍␊
-␍␊
-    function calcPerView() {␍␊
-      const w = window.innerWidth;␍␊
-      if (w <= 768) {
-        perView = 2;   // телефоны
-      } else if (w <= 1024) {␍␊
-        perView = 4;   // планшеты
-      } else {␍␊
-        perView = 3;   // десктоп
-      }␍␊
-      track.style.setProperty('--per-view', perView);␍␊
-    }␍␊
-␍␊
-    function pagesCount() {␍␊
-      return Math.ceil(cards.length / perView);
-    }␍␊
-    let perView = 3; // по умолчанию␊
-    let page = 0;␊
-␊
-    function calcPerView() {␊
-      const w = window.innerWidth;␊
-      if (w <= 640) {
-        perView = 1;
-      } else if (w <= 1024) {␊
-        perView = 2;
-      } else {␊
-        perView = 3;
-      }␊
-      track.style.setProperty('--per-view', perView);␊
-    }␊
-␊
-    function pagesCount() {␊
-      return Math.max(1, Math.ceil(cards.length / perView));
-    }␊
+.footer__nav a:hover {
+  opacity: 0.7;
+}
 
-    function buildDots() {
-      dotsContainer.innerHTML = '';
-      const count = pagesCount();
-      for (let i = 0; i < count; i++) {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.className = 'teachers-slider__dot' + (i === page ? ' is-active' : '');
-        dot.addEventListener('click', () => goToPage(i));
-        dotsContainer.appendChild(dot);
-      }
-    }
+/* ПРАВАЯ ЧАСТЬ */
+.footer__policy {
+  font-weight: 600;
+  font-size: 18px;
+  color: #121826;
+  text-decoration: none;
+  white-space: nowrap;
+}
 
-    function updateDots() {
-      const dots = dotsContainer.querySelectorAll('.teachers-slider__dot');
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i === page);
-      });
-    }
+.footer__policy:hover {
+  opacity: 0.7;
+}
 
-    function goToPage(newPage) {
-      const count = pagesCount();
-      if (!count) return;
+/* Адаптив */
+@media (max-width: 768px) {
+  .footer__inner {
+    flex-direction: column;
+    text-align: rigt;
+    gap: 20px;
+  }
 
-      page = (newPage + count) % count;
-
-      const offset = page * viewport.offsetWidth;
-      track.style.transform = `translateX(-${offset}px)`;
-
-      updateDots();
-    }
-    function goToPage(newPage) {
-      const count = pagesCount();
-      if (!count) return;
-
-      page = (newPage + count) % count;
-
-      const step = viewport.clientWidth;
-      const maxOffset = Math.max(0, track.scrollWidth - viewport.clientWidth);
-      const offset = Math.min(page * step, maxOffset);
-
-      track.style.transform = `translateX(-${offset}px)`;
-
-      updateDots();
-    }
-
-    let resizeTimeout;
-    function onResize() {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        const oldPerView = perView;
-        calcPerView();
-        if (perView !== oldPerView) {
-          page = 0;
-          buildDots();
-          goToPage(0);
-        } else {
-          goToPage(page);
-        }
-      }, 150);
-    }
-
-    calcPerView();
-    buildDots();
-    goToPage(0);
-    function init() {
-      calcPerView();
-      buildDots();
-      requestAnimationFrame(() => goToPage(0));
-    }
-
-    window.addEventListener('load', () => {
-      requestAnimationFrame(init);
-    });
-    init();
-
-    prevBtn.addEventListener('click', () => goToPage(page - 1));
-    nextBtn.addEventListener('click', () => goToPage(page + 1));
-    window.addEventListener('resize', onResize);
-  })();
-</script>
+  .footer__nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
 
 
+/* АДАПТИВ */
 
 
-</body>
-</html>
+@media (max-width: 1024px) {
+  /* СТРЕЛКУ СКРЫВАЕМ НА ВСЁМ, ЧТО МЕНЬШЕ ИЛИ РАВНО 1024px */
+  .hero__arrow {
+    display: none !important;
+     }
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__image-wrap {
+    order: -1;
+  }
+
+  .goal-cards,
+  .about-text,
+  .teachers,
+  .formats,
+  .tracks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-block {
+    grid-template-columns: 1fr;
+  }
+
+  .header__inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    padding: 8px 0;
+  }
+
+  .nav {
+    order: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 8px;
+  }
+}
+
+/* ——— 768px и меньше (телефоны + бургер) ——— */
+@media (max-width: 768px) {
+  /* НА МОБИЛЬНЫХ СТРЕЛКУ ПРЯЧЕМ */
+  .hero__arrow {
+    display: none !important;
+  }
+
+  .header__inner {
+    height: 64px;
+    flex-wrap: nowrap;
+  }
+
+  /* показываем бургер */
+  .burger {
+    display: flex;
+  }
+
+  /* прячем правую часть (кнопка "Главная" в шапке) */
+  .header__right {
+    display: none;
+  }
+
+  /* меню становится выпадающим под шапкой */
+  .nav {
+    position: absolute;
+    top: 64px; /* высота хедера */
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px 16px;
+    border-bottom: 1px solid #f0e6e0;
+    display: none;  /* по умолчанию скрыто */
+    z-index: 25;
+  }
+
+  /* "Главная" только в мобильном меню, в самом верху списка */
+  .nav-main-group {
+    display: block;
+    width: 100%;
+    order: -1;
+    margin-bottom: 8px;
+  }
+
+  .nav-main-toggle {
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-main-submenu a {
+    display: block;
+    padding: 4px 0 4px 16px;
+    font-size: 14px;
+  }
+
+  /* когда шапка в состоянии "открыто" — показываем меню */
+  .header--mobile-open .nav {
+    display: flex;
+  }
+}
+
+/* ——— 640px и меньше (узкие телефоны) ——— */
+@media (max-width: 640px) {
+  .goal-cards,
+  .about-text,
+  .teachers,
+  .formats,
+  .tracks {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__inner {
+    gap: 24px;
+    padding: 24px 20px;
+  }
+
+  .section {
+    padding: 28px 0;
+  }
+
+  .section__title {
+    font-size: 20px;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__title-top,
+  .hero__title-main {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .hero__btn {
+    margin-top: 32px;
+  }
+}
+
+/* ——— 480px и меньше (самые маленькие) ——— */
+@media (max-width: 480px) {
+  /* тут можно при необходимости чуть уменьшить шрифты
+     или кнопки, но стрелку уже не трогаем — её нет */
+}
+
+
+/* Глобальный отступ для всех секций под фиксированную шапку */
+.section {
+  scroll-margin-top: 90px; /* подгони, если нужно: 80–110 */
+}
+
+/* Для преподавателей чуть больше, потому что сверху ещё отступы */
+#teachers {
+  scroll-margin-top: 120px;
+}
+
+/* Можно отдельно подправить другие, если будет съезжать */
+#offers,
+#courses,
+#contacts {
+  scroll-margin-top: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
