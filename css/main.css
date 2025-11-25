@@ -594,20 +594,45 @@ html {
   right: -10px;
 }
 
-/* Планшет — по 2 */
+/* === УМЕНЬШЕНИЕ КРУЖКОВ НА МОБИЛКАХ И ПЛАНШЕТАХ === */
 @media (max-width: 900px) {
-  .teacher-card {
-    min-width: calc((100% - 24px) / 2);
+  .teacher-card__photo-wrap {
+    width: 220px;
+    height: 220px;
   }
 }
 
-/* Телефон — по 1 */
 @media (max-width: 600px) {
-  .teacher-card {
-    min-width: 100%;
+  .teacher-card__photo-wrap {
+    width: 180px;
+    height: 180px;
   }
 }
 
+/* === СКРЫВАЕМ СТРЕЛКИ НА МОБИЛКАХ И ПЛАНШЕТАХ === */
+@media (max-width: 900px) {
+  .teachers-arrow {
+    display: none !important;
+  }
+}
+
+/* === ВКЛЮЧАЕМ СВАЙП ПАЛЬЦЕМ === */
+.teachers-slider {
+  overflow-x: auto;            /* разрешаем горизонтальный скролл */
+  scrollbar-width: none;       /* Firefox: скрыть скроллбар */
+  -ms-overflow-style: none;    /* IE/Edge: скрыть скроллбар */
+}
+
+.teachers-slider::-webkit-scrollbar {
+  display: none;               /* Chrome/Safari: скрыть скроллбар */
+}
+
+/* Чтобы карточки шли подряд без обрезания */
+.teachers-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;          /* важно — ширина = сумме элементов */
+}
 
 /* НАШИ ПРОГРАММЫ И ФОРМАТЫ */
 
@@ -1455,6 +1480,7 @@ html {
 #contacts {
   scroll-margin-top: 100px;
 }
+
 
 
 
