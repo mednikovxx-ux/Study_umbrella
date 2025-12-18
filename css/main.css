@@ -607,9 +607,10 @@ html {
 .teachers-arrow--right { right: -10px; }
 
 /* =========================
-   АДАПТИВ (как ты просила)
+   АДАПТИВ (Преподаватели)
    - кружки меньше
    - стрелки скрыты на планшете/мобилке
+   - на телефонах карточки уже + gap меньше (чтобы было понятно, что можно листать)
    ========================= */
 
 @media (max-width: 1024px) {
@@ -623,22 +624,37 @@ html {
   .teachers-arrow {
     display: none !important;
   }
-            
+
+  .teachers-slider__track {
+    gap: 16px; /* чуть плотнее уже на планшетах */
+  }
+
+  .teachers-slider__track .teacher-card {
+    width: 260px; /* карточка уже, чтобы виднелась следующая */
+  }
+
   .teacher-card__photo-wrap {
     width: 220px;
     height: 220px;
   }
 }
 
+/* телефоны */
 @media (max-width: 600px) {
   .teachers-slider__track {
-    gap: 10px;
+    gap: 10px; /* как ты хотела */
   }
+
+  .teachers-slider__track .teacher-card {
+    width: 240px; /* ключевое: меньше карточка → следующий кружок видно */
+  }
+
   .teacher-card__photo-wrap {
     width: 180px;
     height: 180px;
   }
 }
+
 
 /* НАШИ ПРОГРАММЫ И ФОРМАТЫ */
 
@@ -1486,6 +1502,7 @@ html {
 #contacts {
   scroll-margin-top: 100px;
 }
+
 
 
 
