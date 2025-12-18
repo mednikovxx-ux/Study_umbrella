@@ -631,6 +631,9 @@ html {
 }
 
 @media (max-width: 600px) {
+  .teachers-slider__track {
+    gap: 10px;
+  }
   .teacher-card__photo-wrap {
     width: 180px;
     height: 180px;
@@ -1483,6 +1486,7 @@ html {
 #contacts {
   scroll-margin-top: 100px;
 }
+
 
 
 
