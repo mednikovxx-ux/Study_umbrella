@@ -623,8 +623,7 @@ html {
   .teachers-arrow {
     display: none !important;
   }
- .teachers-slider__track {
-    gap: 16px;              
+            
   .teacher-card__photo-wrap {
     width: 220px;
     height: 220px;
@@ -1484,6 +1483,7 @@ html {
 #contacts {
   scroll-margin-top: 100px;
 }
+
 
 
 
